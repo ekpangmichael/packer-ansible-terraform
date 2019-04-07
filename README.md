@@ -8,8 +8,8 @@ This scripts uses packer to build an image and configures it with Ansible, then 
 1. These project uses [`pm2`](http://pm2.keymetrics.io/) for running the application in background process
 2.  [`nginx`](https://www.nginx.com/) for reverse proxy
 3. [`Packer`](https://packer.io/) For building the image
-4. [`Ansible`](https://www.ansible.com/) For provisioning the image
-5. [`Terraform`](https://www.terraform.io/) For creating the infrastructure on AWS
+4. [`Ansible`](https://www.ansible.com/) For configuring the image
+5. [`Terraform`](https://www.terraform.io/) For provisioning the infrastructure on AWS
 
 
 
