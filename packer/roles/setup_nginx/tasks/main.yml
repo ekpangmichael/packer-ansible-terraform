@@ -1,0 +1,40 @@
+  - name: Installing nginx server
+    apt:
+      name: nginx
+      state: latest
+
+  - name: start nginx server
+    service:
+      name: nginx
+      state: started
+
+  - name: Remove default nginx configuration"
+    file:
+      path: /etc/nginx/sites-enabled/default
+      state: absent
+
+  - name: Remove existing configuration if any
+    file:
+      path: /etc/nginx/sites-available/haven
+      state: absent
+
+  - name: Configure nginx server
+    command: |
+          bash -c 'cat > /etc/nginx/sites-available/haven <<EOF
+            server {
+              listen 80;
+              location / {
+                proxy_pass        http://127.0.0.1:8080;
+              }
+          }
+          EOF'
+  - name: Create a symnlink between the two files
+    file:
+      src: /etc/nginx/sites-available/haven
+      dest: /etc/nginx/sites-enabled/haven
+      state: link
+
+  - name: Restart nginx server
+    service:
+      name: nginx
+      state: restarted

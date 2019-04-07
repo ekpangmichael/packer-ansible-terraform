@@ -1,0 +1,21 @@
+  - name: delete folder if exit
+    file:
+      path: selene-ah-frontend
+      state: absent
+        
+
+  - name: Clone the application repo
+    git:
+      repo: "{{REPO_URL}}"
+      dest: "{{APP_DIR}}"
+
+  - name: Installing packages
+    shell: | 
+        cd {{APP_DIR}}
+        sudo git checkout aws-deploy
+        npm install -ES --unsafe-perm=true
+        
+  - name: Build project
+    shell: |
+        cd {{APP_DIR}}
+        npm run build

@@ -1,0 +1,24 @@
+---
+ - hosts: all
+   become: true
+   remote_user: ubuntu
+   vars_files: 
+    - ./variables.yml
+
+   roles:
+    - core
+    - setup_nginx
+    - setup_node
+    - clone_repo
+    - setup_pm2
+    
+    
+
+    
+
+  
+       
+
+    
+
+    

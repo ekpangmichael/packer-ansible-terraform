@@ -1,0 +1,43 @@
+{
+  "variables": {
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}"
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `AWS_ACCESS_KEY_ID`}}",
+    "secret_key": "{{user `AWS_SECRET_ACCESS_KEY`}}",
+    "region": "us-east-2",
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_name": "authors-haven",
+    "tags": {
+      "OS_Version": "Ubuntu",
+      "Name": "Haven",
+      "Base_AMI_Name": "Haven"
+    },
+    "source_ami_filter": {
+      "filters": {
+        "virtualization-type": "hvm",
+        "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+        "root-device-type": "ebs"
+      },
+      "owners": ["099720109477"],
+      "most_recent": true
+    }
+  }], 
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "./installAnsible.sh"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "./playbook.yml",
+      "extra_arguments": ["--vault-password-file vault.txt"],
+      "playbook_dir": "./",
+      "role_paths":  ["./roles"]
+
+    }
+  ]
+}
