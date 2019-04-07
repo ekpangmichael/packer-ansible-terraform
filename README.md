@@ -1,4 +1,4 @@
-## Automating deployment on AWS EC2 instance using bash script 
+## Automating deployment on AWS EC2 instance using Packer, Ansible and Terraform
 
 ## About
 This scripts uses packer to build an image and configures it with Ansible, then uses Terraform to spin up an EC2 instance on AWS with the image created by packer
