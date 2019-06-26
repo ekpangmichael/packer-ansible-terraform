@@ -60,3 +60,7 @@ You can get the script running in the following way:
 - Click on the instance from the list presented.
 - Copy the IP address and past it in your browser URL to access the application.
 
+## Clean up
+- To clean up when you are done, you can run the destroy.sh file
+this will destroy the  infrastructure setup by terraform
+- To delete the volume and shapshots goto Aws console click on EC2 - volume or shapshots to delete the volumes or snaphsots created.
