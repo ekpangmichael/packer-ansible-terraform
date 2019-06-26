@@ -2,7 +2,6 @@
     file:
       path: selene-ah-frontend
       state: absent
-        
 
   - name: Clone the application repo
     git:

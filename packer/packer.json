@@ -37,7 +37,6 @@
       "extra_arguments": ["--vault-password-file vault.txt"],
       "playbook_dir": "./",
       "role_paths":  ["./roles"]
-
     }
   ]
 }
